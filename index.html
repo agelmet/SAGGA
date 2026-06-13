@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ευαγγελία Σάγγα — Ψυχολόγος MSc | Έδεσσα</title>
+<meta name="description" content="Ευαγγελία Σάγγα, Ψυχολόγος MSc στην Έδεσσα Πέλλας. Ατομικές, οικογενειακές συνεδρίες και θεραπεία ζεύγους με συστημική προσέγγιση. Δια ζώσης & online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sage:#747b69; --sage-deep:#5c6353; --ink:#373d31; --ink-soft:#4a5142;
+  --cream:#f0e3d3; --cream-light:#faf5ec; --clay:#d2bfae; --clay-soft:#e3d5c4;
+  --paper:#f5ecdf; --line:rgba(55,61,49,.16);
+  --thread:#cfc0ad;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-soft:cubic-bezier(.33,1,.68,1);
+  --pad:clamp(1.5rem,5vw,7rem);
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--body); background:var(--cream-light); color:var(--ink);
+  line-height:1.6; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  font-weight:400; letter-spacing:.005em;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--sage);color:var(--cream-light)}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--sage);border:3px solid var(--cream);border-radius:10px}
+
+/* ====== LOADER ====== */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--sage);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .9s var(--ease),visibility .9s var(--ease);
+}
+#loader.done{opacity:0;visibility:hidden}
+#loader svg{width:min(64vw,260px);height:auto;overflow:visible}
+#loader .thread-path{
+  fill:none;stroke:var(--cream-light);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:1400;stroke-dashoffset:1400;
+  animation:draw 2s var(--ease) forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+#loader .ld-name{
+  font-family:var(--display);color:var(--cream-light);
+  font-size:clamp(1rem,3.5vw,1.6rem);letter-spacing:.34em;
+  margin-top:2rem;text-transform:uppercase;font-weight:400;
+  opacity:0;animation:fadeUp .9s var(--ease) 1.3s forwards;padding-left:.34em;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ====== NAV ====== */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:900;
+  padding:clamp(1rem,2.2vw,1.7rem) var(--pad);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .5s var(--ease),padding .5s var(--ease),box-shadow .5s var(--ease);
+}
+header.scrolled{
+  background:rgba(245,236,223,.82);backdrop-filter:blur(14px);
+  padding-top:.85rem;padding-bottom:.85rem;
+  box-shadow:0 1px 0 var(--line);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--display);font-size:1.1rem;letter-spacing:.04em;color:var(--ink)}
+.brand .mark{width:34px;height:34px;flex:none}
+.brand .mark path{fill:none;stroke:var(--sage);stroke-width:7;stroke-linecap:round}
+header.scrolled .brand .mark path{stroke:var(--sage-deep)}
+.nav-hero-text{color:var(--cream-light)}
+header.scrolled .brand{color:var(--ink)}
+header:not(.scrolled) .brand{color:var(--cream-light)}
+header:not(.scrolled) .brand .mark path{stroke:var(--cream-light)}
+nav.links{display:flex;align-items:center;gap:clamp(1.3rem,2.4vw,2.6rem)}
+nav.links a{font-size:.82rem;letter-spacing:.08em;font-weight:500;text-transform:uppercase;position:relative;transition:color .3s,opacity .3s;opacity:.92}
+header:not(.scrolled) nav.links a{color:var(--cream-light)}
+nav.links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:currentColor;transition:width .4s var(--ease)}
+nav.links a:hover::after{width:100%}
+nav.links a:hover{opacity:1}
+.nav-cta{
+  padding:.7rem 1.4rem;border:1.5px solid currentColor;border-radius:40px;
+  font-size:.78rem!important;letter-spacing:.1em;transition:background .4s var(--ease),color .4s var(--ease)!important;
+}
+.nav-cta::after{display:none}
+header.scrolled .nav-cta{border-color:var(--sage);color:var(--sage-deep)}
+header.scrolled .nav-cta:hover{background:var(--sage);color:var(--cream-light)}
+header:not(.scrolled) .nav-cta:hover{background:var(--cream-light);color:var(--sage-deep)}
+.burger{display:none;width:30px;height:20px;position:relative;z-index:1001}
+.burger span{position:absolute;left:0;width:100%;height:2px;background:currentColor;transition:transform .4s var(--ease),opacity .3s,top .4s var(--ease),background .3s}
+header:not(.scrolled) .burger span{background:var(--cream-light)}
+.burger span:nth-child(1){top:2px}.burger span:nth-child(2){top:9px}.burger span:nth-child(3){top:16px}
+body.menu-open .burger span{background:var(--cream-light)}
+body.menu-open .burger span:nth-child(1){top:9px;transform:rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){top:9px;transform:rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;inset:0;z-index:1000;background:var(--sage);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;
+  clip-path:circle(0% at calc(100% - 3rem) 2.4rem);
+  transition:clip-path .7s var(--ease);
+}
+body.menu-open .mobile-menu{clip-path:circle(150% at calc(100% - 3rem) 2.4rem)}
+.mobile-menu a{font-family:var(--display);font-size:clamp(1.7rem,7vw,2.6rem);color:var(--cream-light);font-weight:400;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+body.menu-open .mobile-menu a{opacity:1;transform:translateY(0)}
+body.menu-open .mobile-menu a:nth-child(1){transition-delay:.25s}
+body.menu-open .mobile-menu a:nth-child(2){transition-delay:.32s}
+body.menu-open .mobile-menu a:nth-child(3){transition-delay:.39s}
+body.menu-open .mobile-menu a:nth-child(4){transition-delay:.46s}
+body.menu-open .mobile-menu a:nth-child(5){transition-delay:.53s}
+body.menu-open .mobile-menu a:nth-child(6){transition-delay:.6s}
+.mobile-menu .mm-cta{margin-top:.8rem;border:1.5px solid var(--cream-light);padding:.8rem 2rem;border-radius:40px;font-size:1.1rem}
+
+/* ====== HERO ====== */
+.hero{
+  min-height:100svh;position:relative;display:flex;align-items:center;
+  padding:7rem var(--pad) 4rem;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 85% 15%, var(--clay-soft) 0%, transparent 55%),
+    linear-gradient(165deg,var(--cream) 0%, var(--paper) 60%, var(--clay-soft) 100%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,5rem);align-items:center;width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
+.eyebrow{font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-bottom:1.6rem;display:flex;align-items:center;gap:.8rem}
+.eyebrow::before{content:"";width:38px;height:1.5px;background:var(--sage);display:inline-block}
+.hero h1{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.02;letter-spacing:-.015em;
+  color:var(--ink);
+}
+.hero h1 em{font-style:italic;color:var(--sage-deep);font-weight:400}
+.hero .sub{font-size:clamp(1.02rem,1.5vw,1.22rem);max-width:32ch;margin-top:1.8rem;color:var(--ink-soft);font-weight:400}
+.hero-cta-row{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  background:var(--sage);color:var(--cream-light);padding:1rem 2rem;border-radius:46px;
+  font-weight:600;font-size:.92rem;letter-spacing:.02em;
+  display:inline-flex;align-items:center;gap:.6rem;
+  transition:transform .4s var(--ease),background .4s var(--ease),box-shadow .4s var(--ease);
+  box-shadow:0 10px 30px -12px rgba(92,99,83,.5);
+}
+.btn-primary:hover{background:var(--sage-deep);transform:translateY(-3px);box-shadow:0 16px 36px -12px rgba(92,99,83,.6)}
+.btn-primary svg{width:17px;height:17px;transition:transform .4s var(--ease)}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-ghost{font-weight:600;font-size:.92rem;color:var(--sage-deep);display:inline-flex;align-items:center;gap:.5rem;padding:1rem .4rem;border-bottom:1.5px solid transparent;transition:border-color .4s}
+.btn-ghost:hover{border-color:var(--sage)}
+
+/* hero portrait / thread */
+.hero-visual{position:relative;justify-self:center;width:100%;max-width:420px}
+.portrait-wrap{position:relative;aspect-ratio:4/5;border-radius:200px 200px 16px 16px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(55,61,49,.5)}
+.portrait-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.92)}
+.portrait-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(92,99,83,.28));pointer-events:none}
+.hero-thread{position:absolute;inset:-12% -18% -8% -22%;z-index:-1;pointer-events:none;overflow:visible}
+.hero-thread path{fill:none;stroke:var(--thread);stroke-width:2.4;stroke-linecap:round;
+  stroke-dasharray:2600;stroke-dashoffset:2600;}
+.loaded .hero-thread path{animation:draw 2.6s var(--ease) .4s forwards}
+.float-tag{
+  position:absolute;background:var(--cream-light);border-radius:14px;padding:.7rem 1rem;
+  box-shadow:0 18px 40px -20px rgba(55,61,49,.45);display:flex;align-items:center;gap:.6rem;
+  font-size:.82rem;font-weight:600;color:var(--ink);
+}
+.float-tag .dot{width:9px;height:9px;border-radius:50%;background:var(--sage)}
+.float-tag.t1{top:9%;left:-13%;animation:bob 6s ease-in-out infinite}
+.float-tag.t2{bottom:14%;right:-11%;animation:bob 6s ease-in-out infinite 1.5s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--sage-deep);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+.scroll-cue .bar{width:1.5px;height:46px;background:linear-gradient(var(--sage),transparent);position:relative;overflow:hidden}
+.scroll-cue .bar::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:60%;background:var(--sage);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{top:-60%}60%,100%{top:120%}}
+
+.hero-entrance{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.loaded .hero-entrance{opacity:1;transform:translateY(0)}
+.loaded .he-1{transition-delay:.15s}.loaded .he-2{transition-delay:.3s}.loaded .he-3{transition-delay:.45s}.loaded .he-4{transition-delay:.6s}
+.loaded .hero-visual{transition-delay:.4s}
+
+/* ====== MARQUEE ====== */
+.marquee{background:var(--sage);color:var(--cream-light);overflow:hidden;padding:1.15rem 0;display:flex;white-space:nowrap;position:relative;z-index:5}
+.marquee-track{display:flex;align-items:center;gap:2.6rem;animation:scroll 34s linear infinite;padding-right:2.6rem}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee span{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;letter-spacing:.01em}
+.marquee .sep{width:7px;height:7px;border-radius:50%;background:var(--clay);flex:none;font-size:0}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ====== SECTION BASICS ====== */
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(4.5rem,9vw,8.5rem) var(--pad)}
+.sec-label{font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sage);font-weight:600;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}
+.sec-label::before{content:"";width:26px;height:1.5px;background:var(--sage)}
+.sec-title{font-family:var(--display);font-weight:300;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.08;letter-spacing:-.01em;color:var(--ink);max-width:18ch}
+.sec-title em{font-style:italic;color:var(--sage-deep)}
+
+/* ====== ABOUT ====== */
+.about{background:var(--cream-light)}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.about-img{position:relative}
+.about-img .frame{aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:var(--clay-soft);box-shadow:0 30px 70px -40px rgba(55,61,49,.45)}
+.about-img .frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-img .lic{position:absolute;bottom:-22px;left:-22px;background:var(--sage);color:var(--cream-light);padding:1.1rem 1.4rem;border-radius:14px;font-size:.76rem;line-height:1.5;max-width:230px;box-shadow:0 20px 50px -24px rgba(55,61,49,.6)}
+.about-img .lic b{display:block;font-family:var(--display);font-size:.95rem;font-weight:500;margin-bottom:.25rem;letter-spacing:.02em}
+.about-copy p{font-size:1.04rem;color:var(--ink-soft);margin-bottom:1.2rem;max-width:54ch}
+.about-copy .lead{font-size:clamp(1.15rem,1.7vw,1.32rem);color:var(--ink);font-weight:500;line-height:1.5}
+.pull-quote{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.4vw,1.85rem);line-height:1.35;color:var(--sage-deep);border-left:2px solid var(--sage);padding-left:1.6rem;margin:2rem 0;max-width:32ch}
+.creds{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}
+.cred{display:inline-flex;align-items:center;gap:.5rem;background:var(--paper);border:1px solid var(--line);padding:.55rem 1rem;border-radius:40px;font-size:.82rem;font-weight:600;color:var(--ink-soft)}
+.cred svg{width:15px;height:15px;color:var(--sage)}
+
+/* ====== SERVICES ====== */
+.services{background:var(--paper)}
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.svc-head p{max-width:38ch;color:var(--ink-soft);font-size:1rem}
+.svc-list{border-top:1px solid var(--line)}
+.svc-item{border-bottom:1px solid var(--line);overflow:hidden}
+.svc-trigger{width:100%;display:grid;grid-template-columns:auto 1fr auto auto;gap:clamp(1rem,3vw,2.5rem);align-items:center;padding:1.7rem 0;text-align:left;transition:padding-left .4s var(--ease)}
+.svc-trigger:hover{padding-left:.8rem}
+.svc-num{font-family:var(--display);font-size:.95rem;color:var(--sage);font-weight:500;font-feature-settings:"tnum"}
+.svc-name{font-family:var(--display);font-size:clamp(1.25rem,2.5vw,1.85rem);font-weight:400;color:var(--ink);letter-spacing:-.01em}
+.svc-meta{font-size:.85rem;color:var(--ink-soft);font-weight:600;white-space:nowrap;text-align:right}
+.svc-toggle{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;transition:background .4s var(--ease),border-color .4s,transform .4s var(--ease)}
+.svc-toggle svg{width:15px;height:15px;color:var(--sage-deep);transition:transform .4s var(--ease)}
+.svc-item.open .svc-toggle{background:var(--sage);border-color:var(--sage)}
+.svc-item.open .svc-toggle svg{color:var(--cream-light);transform:rotate(45deg)}
+.svc-body{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.svc-body-inner{padding:0 0 1.9rem;display:grid;grid-template-columns:auto 1fr;gap:clamp(1rem,3vw,2.5rem)}
+.svc-body-inner .spacer{}
+.svc-body-inner p{max-width:60ch;color:var(--ink-soft);font-size:1rem;grid-column:2}
+@media(max-width:640px){.svc-body-inner{grid-template-columns:1fr}.svc-body-inner p{grid-column:1}}
+
+/* ====== ROADMAP / THREAD ====== */
+.roadmap{background:var(--sage);color:var(--cream-light);overflow:hidden;position:relative}
+.roadmap .sec-label{color:var(--clay)}
+.roadmap .sec-label::before{background:var(--clay)}
+.roadmap .sec-title{color:var(--cream-light)}
+.roadmap .sec-title em{color:var(--clay)}
+.roadmap .intro{max-width:46ch;color:rgba(240,227,211,.85);margin-top:1.2rem;font-size:1.05rem}
+.road-wrap{margin-top:clamp(3rem,6vw,5rem);position:relative}
+.road-thread{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.road-thread path{fill:none;stroke:var(--clay);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:3000;stroke-dashoffset:3000;transition:stroke-dashoffset 2.6s var(--ease)}
+.road-thread.draw path{stroke-dashoffset:0}
+.road-steps{display:grid;gap:clamp(2rem,4vw,3.4rem);position:relative;z-index:2}
+.road-step{display:grid;grid-template-columns:88px 1fr;gap:clamp(1.2rem,3vw,2.4rem);align-items:start}
+.road-node{width:88px;display:flex;flex-direction:column;align-items:center}
+.road-node .ring{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--clay);display:flex;align-items:center;justify-content:center;background:var(--sage);position:relative;flex:none}
+.road-node .ring span{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--clay);font-weight:300}
+.road-step:nth-child(odd) .road-content{padding-top:.2rem}
+.road-content h3{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.6vw,1.9rem);margin-bottom:.6rem;letter-spacing:-.01em}
+.road-content p{color:rgba(240,227,211,.82);max-width:48ch;font-size:1rem}
+.road-content .tag{display:inline-block;margin-top:.9rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);border:1px solid rgba(210,191,174,.4);padding:.35rem .8rem;border-radius:30px;font-weight:600}
+
+/* ====== PHILOSOPHY ====== */
+.philo{background:var(--cream-light)}
+.philo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;margin-top:3rem}
+.philo-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:2.2rem 1.9rem;position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s}
+.philo-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--sage);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.philo-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(55,61,49,.4);border-color:transparent}
+.philo-card:hover::before{transform:scaleX(1)}
+.philo-card .ic{width:48px;height:48px;border-radius:13px;background:var(--clay-soft);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem}
+.philo-card .ic svg{width:24px;height:24px;color:var(--sage-deep)}
+.philo-card h3{font-family:var(--display);font-weight:500;font-size:1.3rem;margin-bottom:.7rem;color:var(--ink);letter-spacing:-.01em}
+.philo-card p{color:var(--ink-soft);font-size:.95rem}
+
+/* ====== TESTIMONIALS ====== */
+.reviews{background:var(--paper);overflow:hidden}
+.rev-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.rev-score{display:flex;align-items:center;gap:1rem;background:var(--sage);color:var(--cream-light);padding:1rem 1.5rem;border-radius:16px}
+.rev-score .num{font-family:var(--display);font-size:2.4rem;font-weight:300;line-height:1}
+.rev-score .meta{font-size:.78rem;line-height:1.4}
+.rev-score .meta b{display:block;font-size:.92rem}
+.rev-viewport{margin-top:3rem;overflow:hidden}
+.rev-track{display:flex;gap:1.6rem;transition:transform .7s var(--ease)}
+.rev-card{flex:0 0 clamp(290px,42vw,440px);background:var(--cream-light);border:1px solid var(--line);border-radius:20px;padding:2.2rem;display:flex;flex-direction:column}
+.rev-stars{display:flex;gap:.25rem;margin-bottom:1.1rem}
+.rev-stars svg{width:17px;height:17px;color:var(--sage)}
+.rev-text{font-size:1.02rem;color:var(--ink);line-height:1.6;flex:1;font-weight:400}
+.rev-text.clamped{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.rev-more{align-self:flex-start;margin-top:.6rem;font-size:.8rem;font-weight:600;color:var(--sage-deep);letter-spacing:.04em;border-bottom:1px solid var(--sage);padding-bottom:1px}
+.rev-author{display:flex;align-items:center;gap:.9rem;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.rev-avatar{width:44px;height:44px;border-radius:50%;background:var(--sage);color:var(--cream-light);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.15rem;flex:none}
+.rev-author .nm{font-weight:600;font-size:.95rem}
+.rev-author .dt{font-size:.78rem;color:var(--ink-soft)}
+.rev-controls{display:flex;align-items:center;gap:1rem;margin-top:2.2rem}
+.rev-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .35s var(--ease),border-color .35s}
+.rev-btn:hover{background:var(--sage);border-color:var(--sage)}
+.rev-btn:hover svg{color:var(--cream-light)}
+.rev-btn svg{width:18px;height:18px;color:var(--sage-deep);transition:color .35s}
+.rev-link{margin-left:auto;font-size:.85rem;font-weight:600;color:var(--sage-deep);display:inline-flex;align-items:center;gap:.4rem;border-bottom:1px solid transparent;transition:border-color .3s}
+.rev-link:hover{border-color:var(--sage)}
+
+/* ====== FAQ ====== */
+.faq{background:var(--cream-light)}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.faq-list{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0;font-family:var(--display);font-size:clamp(1.1rem,2vw,1.35rem);font-weight:400;color:var(--ink);letter-spacing:-.005em}
+.faq-q .pm{width:30px;height:30px;flex:none;position:relative}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--sage);transition:transform .4s var(--ease)}
+.faq-q .pm::before{top:50%;left:6px;right:6px;height:1.5px;transform:translateY(-50%)}
+.faq-q .pm::after{left:50%;top:6px;bottom:6px;width:1.5px;transform:translateX(-50%)}
+.faq-item.open .pm::after{transform:translateX(-50%) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.faq-a p{padding:0 0 1.5rem;color:var(--ink-soft);max-width:58ch;font-size:1rem}
+
+/* ====== CONTACT ====== */
+.contact{background:var(--ink);color:var(--cream-light);position:relative;overflow:hidden}
+.contact .glow{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;pointer-events:none}
+.contact .glow.g1{width:420px;height:420px;background:var(--sage);top:-150px;right:-100px;animation:pulse 9s ease-in-out infinite}
+.contact .glow.g2{width:340px;height:340px;background:var(--clay);bottom:-160px;left:-80px;animation:pulse 11s ease-in-out infinite 2s}
+@keyframes pulse{0%,100%{opacity:.32;transform:scale(1)}50%{opacity:.5;transform:scale(1.12)}}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);position:relative;z-index:2}
+.contact .sec-label{color:var(--clay)}.contact .sec-label::before{background:var(--clay)}
+.contact h2{font-family:var(--display);font-weight:300;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:1.4rem}
+.contact h2 em{font-style:italic;color:var(--clay)}
+.contact .lead{color:rgba(240,227,211,.8);max-width:42ch;font-size:1.05rem;margin-bottom:2.4rem}
+.contact-info{display:flex;flex-direction:column;gap:.4rem}
+.ci-row{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 0;border-bottom:1px solid rgba(240,227,211,.14);transition:padding-left .4s var(--ease)}
+.ci-row:hover{padding-left:.6rem}
+.ci-row .ci-ic{width:42px;height:42px;border-radius:11px;background:rgba(116,123,105,.3);display:flex;align-items:center;justify-content:center;flex:none}
+.ci-row .ci-ic svg{width:19px;height:19px;color:var(--clay)}
+.ci-row .ci-txt small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin-bottom:.2rem}
+.ci-row .ci-txt span{font-size:1rem;font-weight:500}
+.contact-card{background:rgba(240,227,211,.05);border:1px solid rgba(240,227,211,.14);border-radius:22px;padding:clamp(1.6rem,3vw,2.4rem);display:flex;flex-direction:column}
+.map-frame{border-radius:14px;overflow:hidden;flex:1;min-height:230px;border:1px solid rgba(240,227,211,.12);margin-bottom:1.6rem}
+.map-frame iframe{width:100%;height:100%;min-height:230px;border:0;filter:grayscale(.3) contrast(.95)}
+.contact-card .btn-primary{justify-content:center;width:100%}
+.online-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(116,123,105,.35);border:1px solid rgba(210,191,174,.3);padding:.5rem 1rem;border-radius:30px;font-size:.78rem;font-weight:600;color:var(--clay);margin-bottom:1.4rem;align-self:flex-start}
+.online-badge .dot{width:8px;height:8px;border-radius:50%;background:#9bbf8a;box-shadow:0 0 0 0 rgba(155,191,138,.6);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(155,191,138,.6)}70%{box-shadow:0 0 0 8px rgba(155,191,138,0)}100%{box-shadow:0 0 0 0 rgba(155,191,138,0)}}
+
+/* ====== FOOTER ====== */
+footer{background:var(--ink-soft);color:rgba(240,227,211,.7);padding:2.4rem var(--pad);display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;font-size:.84rem}
+footer .fbrand{display:flex;align-items:center;gap:.6rem;font-family:var(--display);color:var(--cream-light);font-size:1rem}
+footer .fbrand .mark{width:26px;height:26px}
+footer .fbrand .mark path{fill:none;stroke:var(--clay);stroke-width:7;stroke-linecap:round}
+footer a.credit{color:var(--clay);font-weight:600;border-bottom:1px solid transparent;transition:border-color .3s}
+footer a.credit:hover{border-color:var(--clay)}
+
+/* ====== REVEAL ====== */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}.reveal.d5{transition-delay:.5s}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-visual{max-width:340px;order:-1}
+  .float-tag.t1{left:-4%}.float-tag.t2{right:-2%}
+  .about-grid{grid-template-columns:1fr;gap:4rem}
+  .about-img{max-width:380px;margin:0 auto}
+  .faq-grid{grid-template-columns:1fr;gap:2.5rem}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  nav.links{display:none}
+  .burger{display:block;color:var(--ink)}
+  header:not(.scrolled) .burger{color:var(--cream-light)}
+  .svc-trigger{grid-template-columns:auto 1fr auto;gap:1rem}
+  .svc-meta{display:none}
+  .road-step{grid-template-columns:64px 1fr;gap:1.2rem}
+  .road-node{width:64px}
+  .road-node .ring{width:52px;height:52px}
+  .rev-head{flex-direction:column;align-items:flex-start}
+  footer{flex-direction:column;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  .hero-entrance{opacity:1;transform:none}
+  #loader .thread-path{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" role="status" aria-label="Φόρτωση">
+  <svg viewBox="0 0 400 200" aria-hidden="true">
+    <path class="thread-path" d="M40,120 C40,80 110,70 150,100 C180,122 150,160 120,150 C95,142 110,108 145,108 C200,108 230,150 290,118 C330,96 360,118 360,118"/>
+  </svg>
+  <div class="ld-name">Ευαγγελία Σάγγα</div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <a href="#top" class="brand" aria-label="Ευαγγελία Σάγγα, αρχική">
+    <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M18,58 C18,40 42,38 56,52 C66,62 54,80 42,74 C32,69 40,52 58,52 C82,52 78,42 78,42"/></svg>
+    <span>Ευαγγελία&nbsp;Σάγγα</span>
+  </a>
+  <nav class="links" aria-label="Κύρια πλοήγηση">
+    <a href="#about">Προφίλ</a>
+    <a href="#services">Υπηρεσίες</a>
+    <a href="#roadmap">Διαδρομή</a>
+    <a href="#reviews">Μαρτυρίες</a>
+    <a href="#faq">Ερωτήσεις</a>
+    <a href="#contact" class="nav-cta">Κλείστε ραντεβού</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Άνοιγμα μενού" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">Προφίλ</a>
+  <a href="#services">Υπηρεσίες</a>
+  <a href="#roadmap">Διαδρομή</a>
+  <a href="#reviews">Μαρτυρίες</a>
+  <a href="#faq">Ερωτήσεις</a>
+  <a href="#contact" class="mm-cta">Κλείστε ραντεβού</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow hero-entrance he-1">Ψυχολόγος MSc · Έδεσσα Πέλλας</div>
+      <h1 class="hero-entrance he-2">Κάθε άνθρωπος υπάρχει μέσα σε ένα <em>δίκτυο σχέσεων.</em></h1>
+      <p class="sub hero-entrance he-3">Συστημική ψυχοθεραπεία και συμβουλευτική που βλέπει ολόκληρη την εικόνα — όχι μόνο το σύμπτωμα. Με σεβασμό στις ανάγκες του κάθε ανθρώπου, δια ζώσης ή online.</p>
+      <div class="hero-cta-row hero-entrance he-4">
+        <a href="#contact" class="btn-primary">Κλείστε ραντεβού
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#about" class="btn-ghost">Γνωρίστε με</a>
+      </div>
+    </div>
+    <div class="hero-visual hero-entrance">
+      <svg class="hero-thread" viewBox="0 0 500 600" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-20,120 C120,40 220,180 160,300 C110,400 280,420 360,330 C430,250 380,520 520,500"/>
+      </svg>
+      <div class="portrait-wrap">
+        <img src="https://cdn.doctoranytime.gr/profileimages/09b91f6f-dada-4958-8e6d-71088fcf79b1.webp" alt="Πορτρέτο της Ευαγγελίας Σάγγα, Ψυχολόγου MSc" loading="eager">
+      </div>
+      <div class="float-tag t1"><span class="dot"></span>Συμβεβλημένη με ΕΟΠΥΥ</div>
+      <div class="float-tag t2"><span class="dot"></span>Online συνεδρίες</div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-cue" aria-label="Συνεχίστε προς τα κάτω">
+    <span>Διαδρομή</span><span class="bar"></span>
+  </a>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Ατομικές συνεδρίες</span><span class="sep">·</span>
+    <span>Θεραπεία ζεύγους</span><span class="sep">·</span>
+    <span>Οικογενειακή θεραπεία</span><span class="sep">·</span>
+    <span>Διαχείριση άγχους</span><span class="sep">·</span>
+    <span>Ενδυνάμωση LGBTQI+</span><span class="sep">·</span>
+    <span>Παιδί & έφηβος</span><span class="sep">·</span>
+    <span>Ατομικές συνεδρίες</span><span class="sep">·</span>
+    <span>Θεραπεία ζεύγους</span><span class="sep">·</span>
+    <span>Οικογενειακή θεραπεία</span><span class="sep">·</span>
+    <span>Διαχείριση άγχους</span><span class="sep">·</span>
+    <span>Ενδυνάμωση LGBTQI+</span><span class="sep">·</span>
+    <span>Παιδί & έφηβος</span><span class="sep">·</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <div class="frame">
+          <img src="https://cdn.doctoranytime.gr/profileimages/09b91f6f-dada-4958-8e6d-71088fcf79b1.webp" alt="Η Ευαγγελία Σάγγα στο ιδιωτικό της γραφείο" loading="lazy">
+        </div>
+        <div class="lic">
+          <b>Αρ. αδείας</b>
+          381267 / 9081<br>19-09-2016
+        </div>
+      </div>
+      <div class="about-copy">
+        <div class="sec-label reveal">Το προφίλ μου</div>
+        <p class="lead reveal d1">Είμαι η Ευαγγελία Σάγγα, ψυχολόγος με μεταπτυχιακή εξειδίκευση. Διατηρώ ιδιωτικό γραφείο στην Έδεσσα και πιστεύω πως καμία δυσκολία δεν στέκει μόνη της.</p>
+        <p class="reveal d2">Είμαι πτυχιούχος του Τμήματος Ψυχολογίας του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης και κάτοχος μεταπτυχιακού τίτλου (MSc) στην Εφαρμοσμένη Αναπτυξιακή Ψυχολογία. Συνεχίζω την εκπαίδευσή μου στη Συστημική και Οικογενειακή Ψυχοθεραπεία και Συμβουλευτική στο Ινστιτούτο Συστημικής Θεραπείας Θεσσαλονίκης.</p>
+        <blockquote class="pull-quote reveal d2">«Δεν θεραπεύουμε ένα σύμπτωμα — φροντίζουμε έναν άνθρωπο μέσα στις σχέσεις του.»</blockquote>
+        <p class="reveal d3">Έχω εργαστεί σε Κέντρα Δημιουργικής Απασχόλησης ΑμεΑ καθώς και σε σχολεία Πρωτοβάθμιας και Δευτεροβάθμιας Εκπαίδευσης. Σήμερα προσφέρω ατομικές και οικογενειακές συνεδρίες, καθώς και συνεδρίες ζεύγους — πάντα με γνώμονα τον σεβασμό στις ιδιαίτερες ανάγκες του κάθε ανθρώπου που έρχεται απέναντί μου.</p>
+        <div class="creds reveal d3">
+          <span class="cred"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>MSc Α.Π.Θ.</span>
+          <span class="cred"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Συμβεβλημένη ΕΟΠΥΥ</span>
+          <span class="cred"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Μέλος δικτύου DO+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="svc-head">
+      <div>
+        <div class="sec-label reveal">Υπηρεσίες</div>
+        <h2 class="sec-title reveal d1">Χώρος για τον καθένα, <em>και για τη σχέση.</em></h2>
+      </div>
+      <p class="reveal d2">Τα κόστη είναι ενδεικτικά και ενδέχεται να διαφοροποιηθούν ανάλογα με το περιστατικό. Διαθέσιμες δια ζώσης και μέσω βιντεοκλήσης.</p>
+    </div>
+    <div class="svc-list reveal">
+      <div class="svc-item">
+        <button class="svc-trigger" aria-expanded="false">
+          <span class="svc-num">01</span>
+          <span class="svc-name">Ατομική συνεδρία</span>
+          <span class="svc-meta">50 λεπτά</span>
+          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Ένας προσωπικός χώρος για να δουλέψουμε μαζί ζητήματα άγχους, κρίσεων πανικού, κατάθλιψης ή διαπροσωπικών σχέσεων — με τον δικό σας ρυθμό και χωρίς κριτική στάση.</p></div></div>
+      </div>
+      <div class="svc-item">
+        <button class="svc-trigger" aria-expanded="false">
+          <span class="svc-num">02</span>
+          <span class="svc-name">Συνεδρία μέσω βιντεοκλήσης</span>
+          <span class="svc-meta">50 λεπτά · Online</span>
+          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Η ίδια ποιότητα φροντίδας, από όπου κι αν βρίσκεστε. Ιδανική επιλογή αν μένετε μακριά, ταξιδεύετε ή προτιμάτε την οικειότητα του δικού σας χώρου.</p></div></div>
+      </div>
+      <div class="svc-item">
+        <button class="svc-trigger" aria-expanded="false">
+          <span class="svc-num">03</span>
+          <span class="svc-name">Θεραπεία ζεύγους</span>
+          <span class="svc-meta">90 λεπτά</span>
+          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Ένας ουδέτερος τόπος όπου και οι δύο φωνές ακούγονται. Δουλεύουμε στην επικοινωνία, στα μοτίβα που επαναλαμβάνονται και στη σχέση ως ζωντανό σύστημα.</p></div></div>
+      </div>
+      <div class="svc-item">
+        <button class="svc-trigger" aria-expanded="false">
+          <span class="svc-num">04</span>
+          <span class="svc-name">Οικογενειακή θεραπεία</span>
+          <span class="svc-meta">90 λεπτά</span>
+          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Η οικογένεια αντιμετωπίζεται ως σύνολο. Με συστημική προσέγγιση εξετάζουμε τις σχέσεις, τους ρόλους και τη δυναμική που συνδέει τα μέλη, ώστε η αλλαγή να αγγίξει όλους.</p></div></div>
+      </div>
+      <div class="svc-item">
+        <button class="svc-trigger" aria-expanded="false">
+          <span class="svc-num">05</span>
+          <span class="svc-name">Παιδί, έφηβος & γονεϊκότητα</span>
+          <span class="svc-meta">Κατόπιν αξιολόγησης</span>
+          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Υποστήριξη σε δυσκολίες ανάπτυξης παιδιών και εφήβων και καθοδήγηση γονέων. Με εμπειρία από σχολεία και Κέντρα Δημιουργικής Απασχόλησης ΑμεΑ, και ευαισθησία στην ενδυνάμωση LGBTQI+ ατόμων.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="roadmap" id="roadmap">
+  <div class="wrap">
+    <div class="sec-label reveal">Η διαδρομή της θεραπείας</div>
+    <h2 class="sec-title reveal d1">Ένα νήμα που <em>δεν κόβεται.</em></h2>
+    <p class="intro reveal d2">Η θεραπεία δεν είναι ένα σημείο, αλλά μια συνεχής γραμμή. Να πώς ξετυλίγεται η πορεία μας μαζί — βήμα προς βήμα, στον δικό σας χρόνο.</p>
+    <div class="road-wrap">
+      <svg class="road-thread" id="roadThread" viewBox="0 0 200 1200" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M44,40 C44,140 156,160 156,260 C156,360 44,380 44,480 C44,580 156,600 156,700 C156,800 44,820 44,920 C44,1010 100,1040 100,1120"/>
+      </svg>
+      <div class="road-steps">
+        <div class="road-step reveal">
+          <div class="road-node"><div class="ring"><span>i</span></div></div>
+          <div class="road-content">
+            <h3>Πρώτη επικοινωνία</h3>
+            <p>Επικοινωνείτε μαζί μου και βρίσκουμε μια κατάλληλη στιγμή. Χωρίς δέσμευση, χωρίς πίεση — μόνο μια πρώτη γέφυρα.</p>
+            <span class="tag">Βήμα ένα</span>
+          </div>
+        </div>
+        <div class="road-step reveal">
+          <div class="road-node"><div class="ring"><span>ii</span></div></div>
+          <div class="road-content">
+            <h3>Γνωριμία & αξιολόγηση</h3>
+            <p>Στην πρώτη συνεδρία ακούω την ιστορία σας και χαρτογραφούμε μαζί τι σας φέρνει εδώ. Κατανοούμε το πλαίσιο πριν από οποιοδήποτε βήμα.</p>
+            <span class="tag">Βήμα δύο</span>
+          </div>
+        </div>
+        <div class="road-step reveal">
+          <div class="road-node"><div class="ring"><span>iii</span></div></div>
+          <div class="road-content">
+            <h3>Κοινός σχεδιασμός</h3>
+            <p>Ορίζουμε μαζί τους στόχους και την προσέγγιση που σας ταιριάζει — ατομικά, ως ζευγάρι ή ως οικογένεια. Εσείς κρατάτε το τιμόνι.</p>
+            <span class="tag">Βήμα τρία</span>
+          </div>
+        </div>
+        <div class="road-step reveal">
+          <div class="road-node"><div class="ring"><span>iv</span></div></div>
+          <div class="road-content">
+            <h3>Η θεραπευτική δουλειά</h3>
+            <p>Συνεδρία τη συνεδρία ξετυλίγουμε μοτίβα, δοκιμάζουμε νέους τρόπους και χτίζουμε ασφάλεια. Εδώ συμβαίνει η ουσιαστική αλλαγή.</p>
+            <span class="tag">Βήμα τέσσερα</span>
+          </div>
+        </div>
+        <div class="road-step reveal">
+          <div class="road-node"><div class="ring"><span>v</span></div></div>
+          <div class="road-content">
+            <h3>Ενδυνάμωση & αυτονομία</h3>
+            <p>Στόχος δεν είναι η εξάρτηση, αλλά η δική σας δύναμη. Φεύγετε με εργαλεία, με νέα οπτική και με το νήμα στα χέρια σας.</p>
+            <span class="tag">Βήμα πέντε</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="philo">
+  <div class="wrap">
+    <div class="sec-label reveal">Η φιλοσοφία μου</div>
+    <h2 class="sec-title reveal d1">Πώς δουλεύω, <em>και γιατί.</em></h2>
+    <div class="philo-grid">
+      <div class="philo-card reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3.2" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="15" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M11 11l3 2" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h3>Συστημική ματιά</h3>
+        <p>Δεν βλέπω ποτέ ένα πρόβλημα απομονωμένο. Κάθε δυσκολία αποκτά νόημα μέσα στις σχέσεις και στα συστήματα όπου ζείτε.</p>
+      </div>
+      <div class="philo-card reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Χωρίς κριτική στάση</h3>
+        <p>Ένας ασφαλής χώρος όπου ακούγεστε πραγματικά. Με ενσυναίσθηση και ζεστασιά, χωρίς να σας κρίνω για όσα κουβαλάτε.</p>
+      </div>
+      <div class="philo-card reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h3>Σεβασμός στον ρυθμό σας</h3>
+        <p>Κάθε άνθρωπος έρχεται με τις δικές του ανάγκες. Προσαρμόζω την προσέγγιση σε εσάς — όχι εσάς σε μια μέθοδο.</p>
+      </div>
+      <div class="philo-card reveal d4">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M5 12l4-4M5 12l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Στόχος η αυτονομία</h3>
+        <p>Η θεραπεία ολοκληρώνεται όταν στέκεστε στα δικά σας πόδια. Δουλεύω για να σας δώσω εργαλεία, όχι εξάρτηση.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-head">
+      <div>
+        <div class="sec-label reveal">Μαρτυρίες</div>
+        <h2 class="sec-title reveal d1">Λόγια ανθρώπων <em>που εμπιστεύτηκαν.</em></h2>
+      </div>
+      <div class="rev-score reveal d2">
+        <span class="num">10.0</span>
+        <span class="meta"><b>Άριστη βαθμολογία</b>βάσει επαληθευμένων αξιολογήσεων</span>
+      </div>
+    </div>
+    <div class="rev-viewport">
+      <div class="rev-track" id="revTrack">
+        <article class="rev-card">
+          <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+          <p class="rev-text clamped">Η κα. Σάγγα είναι μια πλήρως καταρτισμένη επαγγελματίας με ενσυναίσθηση, μη κριτική στάση και ζεστασιά. Με βοήθησε να δω τις καταστάσεις που με δυσκόλευαν με νέους τρόπους και να ανακουφιστώ από τη δυσφορία. Την προτείνω ανεπιφύλακτα.</p>
+          <button class="rev-more">Διαβάστε περισσότερα</button>
+          <div class="rev-author"><div class="rev-avatar">Ν</div><div><div class="nm">Νικολέτα</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+          <p class="rev-text clamped">Συνεπής, επαγγελματίας και είναι πάντα διαθέσιμη.</p>
+          <div class="rev-author"><div class="rev-avatar">Μ</div><div><div class="nm">Ματίνα</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+          <p class="rev-text clamped">Εξαιρετική επαγγελματίας! Από την πρώτη συνεδρία ένιωσα ασφάλεια και εμπιστοσύνη. Ακούει πραγματικά, δείχνει κατανόηση και με βοήθησε να δω καταστάσεις από μια νέα, πιο υγιή οπτική.</p>
+          <button class="rev-more">Διαβάστε περισσότερα</button>
+          <div class="rev-author"><div class="rev-avatar">Χ</div><div><div class="nm">Χρήστος</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+          <p class="rev-text clamped">Έχω μείνει πολύ ευχαριστημένη! Εξαιρετική επαγγελματίας, με έκανε να νιώσω πολύ άνετα από την πρώτη στιγμή!</p>
+          <div class="rev-author"><div class="rev-avatar">Δ</div><div><div class="nm">Δέσποινα</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+          <p class="rev-text clamped">Η συνεργασία μου με την ψυχολόγο ήταν πραγματικά πολύ βοηθητική. Με άκουσε χωρίς να με κρίνει και με βοήθησε να δω πιο καθαρά όσα με μπέρδευαν. Είναι ζεστός άνθρωπος και νιώθεις ότι ενδιαφέρεται πραγματικά. Τη προτείνω σε όποιον χρειάζεται στήριξη.</p>
+          <button class="rev-more">Διαβάστε περισσότερα</button>
+          <div class="rev-author"><div class="rev-avatar">Μ</div><div><div class="nm">Μαρία</div><div class="dt">19 Νοεμβρίου 2025</div></div></div>
+        </article>
+      </div>
+    </div>
+    <div class="rev-controls">
+      <button class="rev-btn" id="revPrev" aria-label="Προηγούμενη μαρτυρία"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="rev-btn" id="revNext" aria-label="Επόμενη μαρτυρία"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <a class="rev-link" href="https://www.doctoranytime.gr/d/Psychologos/sagga-euaggelia#review-section" target="_blank" rel="noopener">Δείτε όλες τις αξιολογήσεις
+        <svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div>
+        <div class="sec-label reveal">Συχνές ερωτήσεις</div>
+        <h2 class="sec-title reveal d1">Ό,τι καλό <em>να ξέρετε</em> πριν ξεκινήσουμε.</h2>
+      </div>
+      <div class="faq-list reveal d1">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Πώς κλείνω το πρώτο μου ραντεβού;<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Μπορείτε να επικοινωνήσετε τηλεφωνικά ή μέσω email και θα βρούμε μαζί μια ώρα που σας εξυπηρετεί. Η πρώτη επικοινωνία δεν δεσμεύει σε τίποτα.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Προσφέρετε online συνεδρίες;<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Ναι. Πραγματοποιώ συνεδρίες μέσω βιντεοκλήσης διάρκειας 50 λεπτών, με την ίδια φροντίδα και εχεμύθεια όπως δια ζώσης — ιδανικά αν βρίσκεστε μακριά ή προτιμάτε τον δικό σας χώρο.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Είστε συμβεβλημένη με τον ΕΟΠΥΥ;<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Ναι, είμαι συμβεβλημένη με τον ΕΟΠΥΥ και μέλος του δικτύου DO+. Για τις λεπτομέρειες κάλυψης που αφορούν την περίπτωσή σας, επικοινωνήστε μαζί μου.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Σε τι ζητήματα εξειδικεύεστε;<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Έχω ιδιαίτερη εμπειρία σε διαπροσωπικές σχέσεις, οικογενειακά συστήματα, διαταραχές άγχους και διάθεσης, κρίσεις πανικού και κατάθλιψη, ζητήματα γονεϊκότητας, ψυχική υγεία παιδιού και εφήβου, καθώς και στην ενδυνάμωση LGBTQI+ ατόμων.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Πόσο διαρκεί μια συνεδρία;<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Οι ατομικές συνεδρίες διαρκούν 50 λεπτά, ενώ οι συνεδρίες ζεύγους και οι οικογενειακές 90 λεπτά. Τα κόστη είναι ενδεικτικά και ενδέχεται να προσαρμοστούν ανάλογα με το περιστατικό.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <span class="glow g1"></span><span class="glow g2"></span>
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="sec-label reveal">Επικοινωνία</div>
+        <h2 class="reveal d1">Ας κάνουμε <em>το πρώτο βήμα</em> μαζί.</h2>
+        <p class="lead reveal d2">Είτε ξεκινάτε για πρώτη φορά είτε επιστρέφετε στη θεραπεία, ο χώρος είναι ανοιχτός για εσάς. Επικοινωνήστε και βρίσκουμε μια στιγμή που σας ταιριάζει.</p>
+        <div class="contact-info reveal d3">
+          <a class="ci-row" href="tel:+302381100414">
+            <span class="ci-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="ci-txt"><small>Σταθερό</small><span>23811 00414</span></span>
+          </a>
+          <a class="ci-row" href="tel:+306987639039">
+            <span class="ci-ic"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2.5" width="12" height="19" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="ci-txt"><small>Κινητό</small><span>698 7639 039</span></span>
+          </a>
+          <a class="ci-row" href="mailto:sangaevangelia@hotmail.com">
+            <span class="ci-ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="ci-txt"><small>Email</small><span>sangaevangelia@hotmail.com</span></span>
+          </a>
+          <a class="ci-row" href="https://maps.google.com/?q=Τσιμισκή+31+Έδεσσα" target="_blank" rel="noopener">
+            <span class="ci-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <span class="ci-txt"><small>Γραφείο</small><span>Τσιμισκή 31, Έδεσσα, Πέλλας</span></span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-card reveal d2">
+        <span class="online-badge"><span class="dot"></span>Διαθέσιμες & online συνεδρίες</span>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=%CE%A4%CF%83%CE%B9%CE%BC%CE%B9%CF%83%CE%BA%CE%AE%2031%2C%20%CE%88%CE%B4%CE%B5%CF%83%CF%83%CE%B1&output=embed" title="Χάρτης: Τσιμισκή 31, Έδεσσα" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a href="tel:+302381100414" class="btn-primary">Καλέστε τώρα
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="fbrand">
+    <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M18,58 C18,40 42,38 56,52 C66,62 54,80 42,74 C32,69 40,52 58,52 C82,52 78,42 78,42"/></svg>
+    Ευαγγελία Σάγγα
+  </div>
+  <span>© <span id="year"></span> Ευαγγελία Σάγγα · Ψυχολόγος MSc · Αρ. αδείας 381267/9081</span>
+  <span>Designed by <a class="credit" href="https://www.advonmedia.com" target="_blank" rel="noopener">Advon Media</a></span>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Loader ----
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      document.getElementById('loader').classList.add('done');
+      document.body.classList.add('loaded');
+    }, rm ? 200 : 2300);
+  });
+
+  // ---- Header scroll state ----
+  var header = document.getElementById('header');
+  var onScroll = function(){
+    if(window.scrollY > 60){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- Mobile menu ----
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+  var toggleMenu = function(open){
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true':'false');
+    burger.setAttribute('aria-label', open ? 'Κλείσιμο μενού':'Άνοιγμα μενού');
+  };
+  burger.addEventListener('click', function(){ toggleMenu(!document.body.classList.contains('menu-open')); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ toggleMenu(false); }); });
+
+  // ---- Scroll reveal ----
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !rm){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(function(el){ ro.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // ---- Roadmap thread draw ----
+  var roadThread = document.getElementById('roadThread');
+  if(roadThread){
+    if('IntersectionObserver' in window && !rm){
+      var rt = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ roadThread.classList.add('draw'); rt.unobserve(e.target); } });
+      }, {threshold:0.2});
+      rt.observe(roadThread);
+    } else { roadThread.classList.add('draw'); }
+  }
+
+  // ---- Services accordion ----
+  document.querySelectorAll('.svc-item').forEach(function(item){
+    var trig = item.querySelector('.svc-trigger');
+    var body = item.querySelector('.svc-body');
+    trig.addEventListener('click', function(){
+      var open = item.classList.contains('open');
+      document.querySelectorAll('.svc-item.open').forEach(function(o){
+        if(o!==item){ o.classList.remove('open'); o.querySelector('.svc-body').style.maxHeight=null; o.querySelector('.svc-trigger').setAttribute('aria-expanded','false'); }
+      });
+      if(open){ item.classList.remove('open'); body.style.maxHeight=null; trig.setAttribute('aria-expanded','false'); }
+      else{ item.classList.add('open'); body.style.maxHeight=body.scrollHeight+'px'; trig.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  // ---- FAQ accordion ----
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var open = item.classList.contains('open');
+      if(open){ item.classList.remove('open'); a.style.maxHeight=null; q.setAttribute('aria-expanded','false'); }
+      else{ item.classList.add('open'); a.style.maxHeight=a.scrollHeight+'px'; q.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  // ---- Reviews "read more" ----
+  document.querySelectorAll('.rev-more').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var txt = btn.parentElement.querySelector('.rev-text');
+      var clamped = txt.classList.toggle('clamped');
+      btn.textContent = clamped ? 'Διαβάστε περισσότερα' : 'Λιγότερα';
+      var card = btn.closest('.rev-card');
+      if(card && card._sync) card._sync();
+    });
+  });
+
+  // ---- Reviews carousel ----
+  var track = document.getElementById('revTrack');
+  if(track){
+    var cards = track.children;
+    var index = 0;
+    var autoTimer;
+    var step = function(){
+      var card = cards[0];
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 24;
+      return card.getBoundingClientRect().width + gap;
+    };
+    var visible = function(){
+      return Math.max(1, Math.floor(track.parentElement.getBoundingClientRect().width / step()));
+    };
+    var maxIndex = function(){ return Math.max(0, cards.length - visible()); };
+    var go = function(i){
+      index = Math.max(0, Math.min(i, maxIndex()));
+      track.style.transform = 'translateX(' + (-index*step()) + 'px)';
+    };
+    document.getElementById('revNext').addEventListener('click', function(){ go(index >= maxIndex() ? 0 : index+1); resetAuto(); });
+    document.getElementById('revPrev').addEventListener('click', function(){ go(index<=0 ? maxIndex() : index-1); resetAuto(); });
+    var resetAuto = function(){
+      if(rm) return;
+      clearInterval(autoTimer);
+      autoTimer = setInterval(function(){ go(index >= maxIndex() ? 0 : index+1); }, 5500);
+    };
+    window.addEventListener('resize', function(){ go(index); });
+    var viewport = track.parentElement;
+    viewport.addEventListener('mouseenter', function(){ clearInterval(autoTimer); });
+    viewport.addEventListener('mouseleave', resetAuto);
+    resetAuto();
+  }
+
+  // ---- Year ----
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Anchor offset for fixed header ----
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id.length>1){
+        var target = document.querySelector(id);
+        if(target){ e.preventDefault(); var y = target.getBoundingClientRect().top + window.scrollY - 70; window.scrollTo({top:y, behavior: rm ? 'auto':'smooth'}); }
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
