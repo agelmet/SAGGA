@@ -39,21 +39,33 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* ====== LOADER ====== */
 #loader{
   position:fixed;inset:0;z-index:9999;background:var(--cream-light);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  display:flex;align-items:center;justify-content:center;flex-direction:column; gap: 2rem;
   transition:opacity .9s var(--ease),visibility .9s var(--ease);
 }
 #loader.done{opacity:0;visibility:hidden}
+#loader .ld-name {
+  font-family: var(--display);
+  color: var(--sage-deep);
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  letter-spacing: .08em;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp .9s var(--ease) 0.2s forwards;
+}
 #loader img.preloader-logo {
-  width: clamp(120px, 20vw, 180px);
+  width: clamp(160px, 28vw, 240px);
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 30px 60px rgba(55,61,49,0.15), 0 10px 20px rgba(55,61,49,0.1);
   animation: pulse-logo 2.5s ease-in-out infinite;
+  opacity: 0;
+  animation: pulse-logo 2.5s ease-in-out infinite, fadeUp 0.9s var(--ease) 0.4s forwards;
 }
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse-logo {
-  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 30px 60px rgba(55,61,49,0.15); }
-  50% { transform: scale(1.04); opacity: 0.9; box-shadow: 0 40px 80px rgba(55,61,49,0.25); }
+  0%, 100% { transform: scale(1); box-shadow: 0 30px 60px rgba(55,61,49,0.15); }
+  50% { transform: scale(1.04); box-shadow: 0 40px 80px rgba(55,61,49,0.25); }
 }
 
 /* ====== NAV ====== */
@@ -68,10 +80,10 @@ header.scrolled{
   padding-top:.85rem;padding-bottom:.85rem;
   box-shadow:0 1px 0 var(--line);
 }
-.brand{display:flex;align-items:center;}
+.brand{display:flex;align-items:center; gap: .8rem;}
 .brand img.img-logo {
-  width: clamp(55px, 6vw, 65px);
-  height: clamp(55px, 6vw, 65px);
+  width: clamp(70px, 8vw, 85px);
+  height: clamp(70px, 8vw, 85px);
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -81,6 +93,15 @@ header.scrolled{
   transform: scale(1.06) rotate(3deg);
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
+.brand .brand-text {
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--cream-light);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color .5s var(--ease);
+}
+header.scrolled .brand .brand-text { color: var(--ink); }
 
 nav.links{display:flex;align-items:center;gap:clamp(1.3rem,2.4vw,2.6rem)}
 nav.links a{font-size:.82rem;letter-spacing:.08em;font-weight:600;text-transform:uppercase;position:relative;transition:color .3s,opacity .3s;opacity:.92}
@@ -129,6 +150,36 @@ body.menu-open .mobile-menu a:nth-child(5){transition-delay:.46s}
 body.menu-open .mobile-menu a:nth-child(6){transition-delay:.53s}
 body.menu-open .mobile-menu a:nth-child(7){transition-delay:.6s}
 .mobile-menu .mm-cta{margin-top:.8rem;border:1.5px solid var(--cream-light);padding:.8rem 2rem;border-radius:40px;font-size:1.1rem}
+
+/* ====== BACKGROUND MOTIFS ====== */
+.bg-motif {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.loaded .bg-motif { transition: opacity 2.5s ease 0.5s; }
+.loaded .bg-motif.m-hero { opacity: 0.05; }
+.loaded .bg-motif.m-about { opacity: 0.04; }
+.loaded .bg-motif.m-svc { opacity: 0.05; }
+.loaded .bg-motif.m-contact { opacity: 0.03; }
+
+.motif-sage { color: var(--sage); }
+.motif-clay { color: var(--clay); }
+
+@keyframes motif-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes motif-float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-40px) rotate(5deg); } }
+@keyframes motif-pulse { 0%, 100% { opacity: 0.04; transform: scale(1); } 50% { opacity: 0.08; transform: scale(1.05); } }
+
+.anim-spin { animation: motif-spin 50s linear infinite; }
+.anim-float { animation: motif-float 22s ease-in-out infinite; }
+.anim-pulse { animation: motif-pulse 15s ease-in-out infinite; }
+
+.pos-hero-1 { top: -20%; left: -10%; width: 55vw; max-width: 600px; }
+.pos-hero-2 { bottom: -15%; right: -10%; width: 45vw; max-width: 500px; }
+.pos-about { top: 10%; right: -15%; width: 50vw; max-width: 550px; }
+.pos-svc { bottom: 0%; left: -20%; width: 60vw; max-width: 700px; }
+.pos-contact { top: -20%; right: -10%; width: 50vw; max-width: 600px; }
 
 /* ====== HERO ====== */
 .hero{
@@ -183,8 +234,8 @@ body.menu-open .mobile-menu a:nth-child(7){transition-delay:.6s}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
 /* ====== SECTION BASICS ====== */
-section{position:relative}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(4.5rem,9vw,8.5rem) var(--pad)}
+section{position:relative; overflow:hidden;}
+.wrap{position:relative; z-index:2; max-width:var(--maxw);margin:0 auto;padding:clamp(4.5rem,9vw,8.5rem) var(--pad)}
 .sec-label{font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sage);font-weight:600;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}
 .sec-label::before{content:"";width:26px;height:1.5px;background:var(--sage)}
 .sec-title{font-family:var(--display);font-weight:300;font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.08;letter-spacing:-.01em;color:var(--ink);max-width:20ch}
@@ -236,14 +287,27 @@ section{position:relative}
 .roadmap .sec-title em{color:var(--clay)}
 .roadmap .intro{max-width:50ch;color:rgba(240,227,211,.85);margin:1.4rem auto 0;font-size:1.1rem}
 .road-wrap{margin-top:clamp(4rem,7vw,6rem);position:relative;width:100%;max-width:700px;}
-.road-wrap::before {
-  content: "";
+
+.road-thread {
   position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 2px; height: 100%;
-  background: rgba(210,191,174,0.25);
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
   z-index: 0;
 }
+.road-thread path {
+  fill: none;
+  stroke: var(--clay);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 4000;
+  transition: stroke-dashoffset 3s var(--ease);
+}
+.road-thread.draw path { stroke-dashoffset: 0; }
+
 .road-steps{display:flex;flex-direction:column;gap:clamp(3.5rem,5vw,4.5rem);position:relative;z-index:2;width:100%;}
 .road-step{display:flex;flex-direction:column;align-items:center;position:relative;}
 .road-node{display:flex;flex-direction:column;align-items:center;margin-bottom:1.4rem;background:var(--sage);padding:10px;}
@@ -261,8 +325,6 @@ section{position:relative}
 .philo-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--sage);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .philo-card:hover{transform:translateY(-8px);box-shadow:0 35px 70px -30px rgba(55,61,49,.35);border-color:transparent}
 .philo-card:hover::before{transform:scaleX(1)}
-.philo-card .ic{width:52px;height:52px;border-radius:14px;background:var(--clay-soft);display:flex;align-items:center;justify-content:center;margin-bottom:1.6rem}
-.philo-card .ic svg{width:26px;height:26px;color:var(--sage-deep)}
 .philo-card h3{font-family:var(--display);font-weight:500;font-size:1.4rem;margin-bottom:.8rem;color:var(--ink);letter-spacing:-.01em}
 .philo-card p{color:var(--ink-soft);font-size:1.02rem}
 
@@ -284,7 +346,6 @@ section{position:relative}
 .rev-author{display:flex;align-items:center;gap:1rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .rev-avatar{width:48px;height:48px;border-radius:50%;background:var(--sage);color:var(--cream-light);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.2rem;flex:none}
 .rev-author .nm{font-weight:600;font-size:1rem}
-.rev-author .dt{font-size:.8rem;color:var(--ink-soft)}
 .rev-controls{display:flex;align-items:center;gap:1rem;margin-top:2.5rem}
 .rev-btn{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .35s var(--ease),border-color .35s}
 .rev-btn:hover{background:var(--sage);border-color:var(--sage)}
@@ -365,23 +426,27 @@ footer a.credit:hover{border-color:var(--clay)}
   .svc-meta{display:none}
   .rev-head{flex-direction:column;align-items:flex-start}
   footer{flex-direction:column;text-align:center;justify-content:center;}
+  .bg-motif.pos-hero-1 { width: 90vw; left: -20%; }
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
   .hero-entrance{opacity:1;transform:none;filter:blur(0)}
+  .bg-motif { animation: none!important; opacity: 0.05!important; }
 }
 </style>
 </head>
 <body>
 
 <div id="loader" role="status" aria-label="Φόρτωση">
+  <div class="ld-name">Ευαγγελία Σάγγα</div>
   <img src="https://raw.githubusercontent.com/agelmet/SAGGA/refs/heads/main/logosag.jpg" alt="Ευαγγελία Σάγγα Λογότυπο" class="preloader-logo">
 </div>
 
 <header id="header">
   <a href="#top" class="brand" aria-label="Ευαγγελία Σάγγα, αρχική">
     <img src="https://raw.githubusercontent.com/agelmet/SAGGA/refs/heads/main/logosag.jpg" alt="Ευαγγελία Σάγγα Λογότυπο" class="img-logo">
+    <span class="brand-text">Ευαγγελία Σάγγα</span>
   </a>
   <nav class="links" aria-label="Κύρια πλοήγηση">
     <a href="#about">Προφίλ</a>
@@ -395,7 +460,7 @@ footer a.credit:hover{border-color:var(--clay)}
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <button class="close-menu" id="closeMenu" aria-label="Κλείσιμο μενού">&times;</button>
+  <button class="close-menu" id="closeMenu" aria-label="Κλείσιμο μενού">×</button>
   <a href="#about">Προφίλ</a>
   <a href="#services">Υπηρεσίες</a>
   <a href="#roadmap">Διαδρομή</a>
@@ -405,6 +470,13 @@ footer a.credit:hover{border-color:var(--clay)}
 </div>
 
 <section class="hero" id="top">
+  <svg class="bg-motif m-hero motif-sage anim-float pos-hero-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M45.7,-76.4C58.9,-69.3,69,-55.4,76.5,-40.5C84,-25.6,88.9,-9.7,86.9,5.5C84.9,20.7,76.1,35.2,65.2,46.8C54.3,58.4,41.3,67,26.6,72.9C11.9,78.8,-4.5,82.1,-20.1,78.8C-35.7,75.5,-50.4,65.6,-61.2,52.8C-72,40,-78.8,24.2,-81.7,7.8C-84.6,-8.6,-83.5,-25.7,-75.4,-39.9C-67.3,-54.1,-52.1,-65.4,-36.8,-71.7C-21.5,-78,-6,-79.3,10.2,-77.6C26.4,-75.9,42.7,-71.2,45.7,-76.4Z" transform="translate(100 100)" />
+  </svg>
+  <svg class="bg-motif m-hero motif-sage anim-spin pos-hero-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="none" stroke="currentColor" stroke-width="2" d="M38.1,-63.9C51.6,-57.4,66.4,-50.2,76.4,-38.3C86.4,-26.4,91.6,-9.8,88.2,5.2C84.8,20.2,72.8,33.5,60.5,43.7C48.2,53.9,35.6,61,21.8,66.3C8,71.6,-7.1,75.1,-21.5,72C-35.9,68.9,-49.6,59.2,-61.2,46.7C-72.8,34.2,-82.3,18.9,-84.6,2.8C-86.9,-13.3,-82.1,-30.2,-71.8,-42.6C-61.5,-55,-45.8,-62.9,-31.4,-68.8C-17,-74.7,-3.8,-78.6,8.6,-76.5C21,-74.4,32.4,-66.3,38.1,-63.9Z" transform="translate(100 100)" />
+  </svg>
+
   <div class="hero-grid">
       <div class="eyebrow hero-entrance he-1">Κλινικη Ψυχολογος MSc · Εδεσσα & Online</div>
       <h1 class="hero-entrance he-2">Η πορεία προς την αλλαγή, ξεκινά από <em>μια αληθινή σχέση.</em></h1>
@@ -439,6 +511,10 @@ footer a.credit:hover{border-color:var(--clay)}
 </div>
 
 <section class="about" id="about">
+  <svg class="bg-motif m-about motif-sage anim-pulse pos-about" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M45.7,-76.4C58.9,-69.3,69,-55.4,76.5,-40.5C84,-25.6,88.9,-9.7,86.9,5.5C84.9,20.7,76.1,35.2,65.2,46.8C54.3,58.4,41.3,67,26.6,72.9C11.9,78.8,-4.5,82.1,-20.1,78.8C-35.7,75.5,-50.4,65.6,-61.2,52.8C-72,40,-78.8,24.2,-81.7,7.8C-84.6,-8.6,-83.5,-25.7,-75.4,-39.9C-67.3,-54.1,-52.1,-65.4,-36.8,-71.7C-21.5,-78,-6,-79.3,10.2,-77.6C26.4,-75.9,42.7,-71.2,45.7,-76.4Z" transform="translate(100 100)" />
+  </svg>
+
   <div class="wrap">
     <div class="about-grid">
       <div class="about-img reveal">
@@ -454,7 +530,7 @@ footer a.credit:hover{border-color:var(--clay)}
         <div class="sec-label reveal">Λιγα λογια για μενα</div>
         <p class="lead reveal d1">Ονομάζομαι Ευαγγελία Σάγγα και είμαι Κλινική Ψυχολόγος MSc. Στο ιδιωτικό μου γραφείο, δουλεύουμε μαζί σε ένα προστατευμένο περιβάλλον για να ανακαλύψετε τις δικές σας εσωτερικές δυνάμεις.</p>
         <p class="reveal d2">Ολοκλήρωσα τις σπουδές μου στο Τμήμα Ψυχολογίας του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης (ΑΠΘ) και έλαβα το Μεταπτυχιακό μου δίπλωμα στην Εφαρμοσμένη Αναπτυξιακή Ψυχολογία. Συνεχίζω την εξέλιξή μου μέσα από την εκπαίδευση στη Συστημική και Οικογενειακή Ψυχοθεραπεία στο Ινστιτούτο Συστημικής Θεραπείας Θεσσαλονίκης.</p>
-        <blockquote class="pull-quote reveal d2">«Πιστεύω βαθιά ότι καμία δυσκολία δεν υφίσταται στο κενό. Το πλαίσιο της ζωής μας διαμορφώνει την αλήθεια μας.»</blockquote>
+        <blockquote class="pull-quote reveal d2">«Πιστεύω ότι καμία δυσκολία δεν υφίσταται στο κενό. Το πλαίσιο της ζωής μας διαμορφώνει την αλήθεια μας.»</blockquote>
         <p class="reveal d3">Μέσα από την πορεία μου σε σχολεία, δομές ειδικής αγωγής και την κλινική πράξη, έχω δει πως η ουσιαστική θεραπεία ανθίζει όταν υπάρχει πραγματική αποδοχή. Προσφέρω ατομικές και οικογενειακές συνεδρίες, με μοναδικό γνώμονα τον σεβασμό στη δική σας, ξεχωριστή διαδρομή.</p>
         <div class="creds reveal d3">
           <span class="cred"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>MSc Α.Π.Θ.</span>
@@ -467,6 +543,10 @@ footer a.credit:hover{border-color:var(--clay)}
 </section>
 
 <section class="services" id="services">
+  <svg class="bg-motif m-svc motif-sage anim-float pos-svc" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="none" stroke="currentColor" stroke-width="2" d="M38.1,-63.9C51.6,-57.4,66.4,-50.2,76.4,-38.3C86.4,-26.4,91.6,-9.8,88.2,5.2C84.8,20.2,72.8,33.5,60.5,43.7C48.2,53.9,35.6,61,21.8,66.3C8,71.6,-7.1,75.1,-21.5,72C-35.9,68.9,-49.6,59.2,-61.2,46.7C-72.8,34.2,-82.3,18.9,-84.6,2.8C-86.9,-13.3,-82.1,-30.2,-71.8,-42.6C-61.5,-55,-45.8,-62.9,-31.4,-68.8C-17,-74.7,-3.8,-78.6,8.6,-76.5C21,-74.4,32.4,-66.3,38.1,-63.9Z" transform="translate(100 100)" />
+  </svg>
+
   <div class="wrap">
     <div class="svc-head">
       <div>
@@ -532,6 +612,10 @@ footer a.credit:hover{border-color:var(--clay)}
     <p class="intro reveal d2">Η ψυχοθεραπεία δεν είναι απλώς ένας προορισμός, αλλά μια εξελικτική διαδρομή. Δείτε πώς ξετυλίγεται η κοινή μας πορεία, με απόλυτο σεβασμό στον δικό σας ρυθμό.</p>
     
     <div class="road-wrap">
+      <svg class="road-thread" id="roadThread" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M50,0 C70,150 30,250 50,400 C70,550 30,650 50,800 C70,900 50,1000 50,1000" />
+      </svg>
+      
       <div class="road-steps">
         <div class="road-step reveal">
           <div class="road-node"><div class="ring"><span>i</span></div></div>
@@ -584,22 +668,18 @@ footer a.credit:hover{border-color:var(--clay)}
     <h2 class="sec-title reveal d1">Πώς δουλεύω, <em>και γιατί.</em></h2>
     <div class="philo-grid">
       <div class="philo-card reveal d1">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3.2" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="15" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M11 11l3 2" stroke="currentColor" stroke-width="1.8"/></svg></div>
         <h3>Συστημική Οπτική</h3>
         <p>Κανένα πρόβλημα δεν αντιμετωπίζεται μεμονωμένα. Κάθε δυσκολία αποκτά το πραγματικό της νόημα μέσα στο δίκτυο των σχέσεων που ζείτε καθημερινά.</p>
       </div>
       <div class="philo-card reveal d2">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
         <h3>Αποδοχή, Χωρίς Κριτική</h3>
         <p>Σας παρέχω ένα απόλυτα ασφαλές περιβάλλον. Σε εμένα θα βρείτε ενσυναίσθηση, ζεστασιά και πλήρη αποδοχή, ό,τι κι αν κουβαλάτε μαζί σας.</p>
       </div>
       <div class="philo-card reveal d3">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div>
         <h3>Σεβασμός στον Ρυθμό Σας</h3>
         <p>Ο κάθε άνθρωπος φέρει τον δικό του μοναδικό ψυχισμό. Προσαρμόζω την επιστημονική μου γνώση πάνω στις δικές σας ανάγκες, και ποτέ το αντίστροφο.</p>
       </div>
       <div class="philo-card reveal d4">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M5 12l4-4M5 12l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
         <h3>Στόχος η Ανεξαρτησία</h3>
         <p>Η επιτυχία της θεραπείας έρχεται όταν αισθανθείτε δυνατοί να σταθείτε στα δικά σας πόδια. Δουλεύουμε μαζί για να σας οπλίσω με γνώση, όχι για να δημιουργήσω εξάρτηση.</p>
       </div>
@@ -625,29 +705,29 @@ footer a.credit:hover{border-color:var(--clay)}
           <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
           <p class="rev-text clamped">Η κα. Σάγγα είναι μια πλήρως καταρτισμένη επαγγελματίας με ενσυναίσθηση, μη κριτική στάση και ζεστασιά. Με βοήθησε να δω τις καταστάσεις που με δυσκόλευαν με νέους τρόπους και να ανακουφιστώ από τη δυσφορία. Την προτείνω ανεπιφύλακτα.</p>
           <button class="rev-more">Διαβάστε περισσότερα</button>
-          <div class="rev-author"><div class="rev-avatar">Ν</div><div><div class="nm">Νικολέτα</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+          <div class="rev-author"><div class="rev-avatar">Ν</div><div><div class="nm">Νικολέτα</div></div></div>
         </article>
         <article class="rev-card">
           <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
           <p class="rev-text clamped">Συνεπής, επαγγελματίας και είναι πάντα διαθέσιμη.</p>
-          <div class="rev-author"><div class="rev-avatar">Μ</div><div><div class="nm">Ματίνα</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+          <div class="rev-author"><div class="rev-avatar">Μ</div><div><div class="nm">Ματίνα</div></div></div>
         </article>
         <article class="rev-card">
           <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
           <p class="rev-text clamped">Εξαιρετική επαγγελματίας! Από την πρώτη συνεδρία ένιωσα ασφάλεια και εμπιστοσύνη. Ακούει πραγματικά, δείχνει κατανόηση και με βοήθησε να δω καταστάσεις από μια νέα, πιο υγιή οπτική.</p>
           <button class="rev-more">Διαβάστε περισσότερα</button>
-          <div class="rev-author"><div class="rev-avatar">Χ</div><div><div class="nm">Χρήστος</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+          <div class="rev-author"><div class="rev-avatar">Χ</div><div><div class="nm">Χρήστος</div></div></div>
         </article>
         <article class="rev-card">
           <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
           <p class="rev-text clamped">Έχω μείνει πολύ ευχαριστημένη! Εξαιρετική επαγγελματίας, με έκανε να νιώσω πολύ άνετα από την πρώτη στιγμή!</p>
-          <div class="rev-author"><div class="rev-avatar">Δ</div><div><div class="nm">Δέσποινα</div><div class="dt">20 Νοεμβρίου 2025</div></div></div>
+          <div class="rev-author"><div class="rev-avatar">Δ</div><div><div class="nm">Δέσποινα</div></div></div>
         </article>
         <article class="rev-card">
           <div class="rev-stars" aria-label="5 αστέρια"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
           <p class="rev-text clamped">Η συνεργασία μου με την ψυχολόγο ήταν πραγματικά πολύ βοηθητική. Με άκουσε χωρίς να με κρίνει και με βοήθησε να δω πιο καθαρά όσα με μπέρδευαν. Είναι ζεστός άνθρωπος και νιώθεις ότι ενδιαφέρεται πραγματικά. Τη προτείνω σε όποιον χρειάζεται στήριξη.</p>
           <button class="rev-more">Διαβάστε περισσότερα</button>
-          <div class="rev-author"><div class="rev-avatar">Μ</div><div><div class="nm">Μαρία</div><div class="dt">19 Νοεμβρίου 2025</div></div></div>
+          <div class="rev-author"><div class="rev-avatar">Μ</div><div><div class="nm">Μαρία</div></div></div>
         </article>
       </div>
     </div>
@@ -695,6 +775,10 @@ footer a.credit:hover{border-color:var(--clay)}
 </section>
 
 <section class="contact" id="contact">
+  <svg class="bg-motif m-contact motif-clay anim-spin pos-contact" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M45.7,-76.4C58.9,-69.3,69,-55.4,76.5,-40.5C84,-25.6,88.9,-9.7,86.9,5.5C84.9,20.7,76.1,35.2,65.2,46.8C54.3,58.4,41.3,67,26.6,72.9C11.9,78.8,-4.5,82.1,-20.1,78.8C-35.7,75.5,-50.4,65.6,-61.2,52.8C-72,40,-78.8,24.2,-81.7,7.8C-84.6,-8.6,-83.5,-25.7,-75.4,-39.9C-67.3,-54.1,-52.1,-65.4,-36.8,-71.7C-21.5,-78,-6,-79.3,10.2,-77.6C26.4,-75.9,42.7,-71.2,45.7,-76.4Z" transform="translate(100 100)" />
+  </svg>
+
   <span class="glow g1"></span><span class="glow g2"></span>
   <div class="wrap">
     <div class="contact-grid">
@@ -753,7 +837,7 @@ footer a.credit:hover{border-color:var(--clay)}
     setTimeout(function(){
       document.getElementById('loader').classList.add('done');
       document.body.classList.add('loaded');
-    }, rm ? 200 : 2000);
+    }, rm ? 200 : 2500);
   });
 
   // ---- Header scroll state ----
@@ -787,6 +871,17 @@ footer a.credit:hover{border-color:var(--clay)}
     revealEls.forEach(function(el){ ro.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // ---- Roadmap thread draw ----
+  var roadThread = document.getElementById('roadThread');
+  if(roadThread){
+    if('IntersectionObserver' in window && !rm){
+      var rt = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ roadThread.classList.add('draw'); } });
+      }, {threshold:0.1});
+      rt.observe(roadThread);
+    } else { roadThread.classList.add('draw'); }
   }
 
   // ---- Services accordion ----
