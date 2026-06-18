@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ευαγγελία Σάγγα — Κλινική Ψυχολόγος MSc | Έδεσσα</title>
+<title>Ευαγγελία Σάγγα — Ψυχολόγος MSc | Έδεσσα</title>
 <meta name="description" content="Ευαγγελία Σάγγα, Ψυχολόγος MSc στην Έδεσσα Πέλλας. Παρέχω εξατομικευμένες συνεδρίες ενηλίκων, οικογένειας και ζεύγους. Δια ζώσης & online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 30px 60px rgba(55,61,49,0.15), 0 10px 20px rgba(55,61,49,0.1);
-  animation: pulse-logo 2.5s ease-in-out infinite;
   opacity: 0;
   animation: pulse-logo 2.5s ease-in-out infinite, fadeUp 0.9s var(--ease) 0.4s forwards;
 }
@@ -148,7 +147,6 @@ body.menu-open .mobile-menu a:nth-child(3){transition-delay:.32s}
 body.menu-open .mobile-menu a:nth-child(4){transition-delay:.39s}
 body.menu-open .mobile-menu a:nth-child(5){transition-delay:.46s}
 body.menu-open .mobile-menu a:nth-child(6){transition-delay:.53s}
-body.menu-open .mobile-menu a:nth-child(7){transition-delay:.6s}
 .mobile-menu .mm-cta{margin-top:.8rem;border:1.5px solid var(--cream-light);padding:.8rem 2rem;border-radius:40px;font-size:1.1rem}
 
 /* ====== BACKGROUND MOTIFS ====== */
@@ -251,7 +249,6 @@ section{position:relative; overflow:hidden;}
 .about-img .lic b{display:block;font-family:var(--display);font-size:.95rem;font-weight:500;margin-bottom:.25rem;letter-spacing:.02em}
 .about-copy p{font-size:1.06rem;color:var(--ink-soft);margin-bottom:1.2rem;max-width:54ch}
 .about-copy .lead{font-size:clamp(1.2rem,1.7vw,1.4rem);color:var(--ink);font-weight:500;line-height:1.5}
-.pull-quote{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.35;color:var(--sage-deep);border-left:2px solid var(--sage);padding-left:1.6rem;margin:2.4rem 0;max-width:32ch}
 .creds{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.2rem}
 .cred{display:inline-flex;align-items:center;gap:.5rem;background:var(--paper);border:1px solid var(--line);padding:.55rem 1rem;border-radius:40px;font-size:.82rem;font-weight:600;color:var(--ink-soft)}
 .cred svg{width:15px;height:15px;color:var(--sage)}
@@ -260,67 +257,29 @@ section{position:relative; overflow:hidden;}
 .services{background:var(--paper)}
 .svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
 .svc-head p{max-width:38ch;color:var(--ink-soft);font-size:1.05rem}
-.svc-list{border-top:1px solid var(--line)}
-.svc-item{border-bottom:1px solid var(--line);overflow:hidden}
-.svc-trigger{width:100%;display:grid;grid-template-columns:auto 1fr auto auto;gap:clamp(1rem,3vw,2.5rem);align-items:center;padding:1.9rem 0;text-align:left;transition:padding-left .4s var(--ease)}
-.svc-trigger:hover{padding-left:.8rem}
-.svc-num{font-family:var(--display);font-size:1rem;color:var(--sage);font-weight:500;font-feature-settings:"tnum"}
-.svc-name{font-family:var(--display);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:400;color:var(--ink);letter-spacing:-.01em}
-.svc-meta{font-size:.85rem;color:var(--ink-soft);font-weight:600;white-space:nowrap;text-align:right}
-.svc-toggle{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;transition:background .4s var(--ease),border-color .4s,transform .4s var(--ease)}
-.svc-toggle svg{width:16px;height:16px;color:var(--sage-deep);transition:transform .4s var(--ease)}
-.svc-item.open .svc-toggle{background:var(--sage);border-color:var(--sage)}
-.svc-item.open .svc-toggle svg{color:var(--cream-light);transform:rotate(45deg)}
-.svc-body{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
-.svc-body-inner{padding:0 0 2rem;display:grid;grid-template-columns:auto 1fr;gap:clamp(1rem,3vw,2.5rem)}
-.svc-body-inner .spacer{}
-.svc-body-inner p{max-width:60ch;color:var(--ink-soft);font-size:1.05rem;grid-column:2}
-@media(max-width:640px){.svc-body-inner{grid-template-columns:1fr}.svc-body-inner p{grid-column:1}}
-
-/* ====== ROADMAP / THREAD ====== */
-.roadmap{background:var(--sage);color:var(--cream-light);overflow:hidden;position:relative}
-.roadmap .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;}
-.roadmap .sec-label{color:var(--clay);justify-content:center;}
-.roadmap .sec-label::before{display:none;}
-.roadmap .sec-label::after{content:"";width:26px;height:1.5px;background:var(--clay);}
-.roadmap .sec-title{color:var(--cream-light);max-width:28ch;}
-.roadmap .sec-title em{color:var(--clay)}
-.roadmap .intro{max-width:50ch;color:rgba(240,227,211,.85);margin:1.4rem auto 0;font-size:1.1rem}
-.road-wrap{margin-top:clamp(4rem,7vw,6rem);position:relative;width:100%;max-width:700px;}
-
-.road-thread {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.svc-pill { 
+  background: var(--cream-light); 
+  border: 1px solid var(--line); 
+  border-radius: 16px; 
+  padding: 1.8rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 1.2rem; 
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.road-thread path {
-  fill: none;
-  stroke: var(--clay);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-dasharray: 4000;
-  stroke-dashoffset: 4000;
-  transition: stroke-dashoffset 3s var(--ease);
+.svc-pill:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 15px 30px rgba(55,61,49,.08); 
+  border-color: var(--sage);
 }
-.road-thread.draw path { stroke-dashoffset: 0; }
+.svc-pill .svc-num { font-family: var(--display); font-size: 1.2rem; color: var(--sage); font-weight: 400; flex: none; }
+.svc-pill .svc-name { font-family: var(--display); font-size: 1.35rem; color: var(--ink); font-weight: 500; letter-spacing: -0.01em; }
 
-.road-steps{display:flex;flex-direction:column;gap:clamp(3.5rem,5vw,4.5rem);position:relative;z-index:2;width:100%;}
-.road-step{display:flex;flex-direction:column;align-items:center;position:relative;}
-.road-node{display:flex;flex-direction:column;align-items:center;margin-bottom:1.4rem;background:var(--sage);padding:10px;}
-.road-node .ring{width:70px;height:70px;border-radius:50%;border:2px solid var(--clay);display:flex;align-items:center;justify-content:center;background:var(--sage);position:relative;flex:none;box-shadow:0 0 0 10px var(--sage);}
-.road-node .ring span{font-family:var(--display);font-style:italic;font-size:1.6rem;color:var(--clay);font-weight:300}
-.road-content{max-width:520px;}
-.road-content h3{font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,2.6vw,2.1rem);margin-bottom:.8rem;letter-spacing:-.01em}
-.road-content p{color:rgba(240,227,211,.85);font-size:1.05rem;margin:0 auto;}
-.road-content .tag{display:inline-block;margin-top:1rem;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);border:1px solid rgba(210,191,174,.4);padding:.4rem 1rem;border-radius:30px;font-weight:600}
 
 /* ====== PHILOSOPHY ====== */
 .philo{background:var(--cream-light)}
-.philo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;margin-top:3.5rem}
+.philo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:3.5rem}
 .philo-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s}
 .philo-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--sage);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .philo-card:hover{transform:translateY(-8px);box-shadow:0 35px 70px -30px rgba(55,61,49,.35);border-color:transparent}
@@ -422,8 +381,6 @@ footer a.credit:hover{border-color:var(--clay)}
 @media(max-width:760px){
   nav.links{display:none}
   .burger{display:block;}
-  .svc-trigger{grid-template-columns:auto 1fr auto;gap:1rem}
-  .svc-meta{display:none}
   .rev-head{flex-direction:column;align-items:flex-start}
   footer{flex-direction:column;text-align:center;justify-content:center;}
   .bg-motif.pos-hero-1 { width: 90vw; left: -20%; }
@@ -451,7 +408,7 @@ footer a.credit:hover{border-color:var(--clay)}
   <nav class="links" aria-label="Κύρια πλοήγηση">
     <a href="#about">Προφίλ</a>
     <a href="#services">Υπηρεσίες</a>
-    <a href="#roadmap">Διαδρομή</a>
+    <a href="#philo">Προσέγγιση</a>
     <a href="#reviews">Αξιολογήσεις</a>
     <a href="#faq">Ερωτήσεις</a>
     <a href="#contact" class="nav-cta">Κλείστε ραντεβού</a>
@@ -463,7 +420,7 @@ footer a.credit:hover{border-color:var(--clay)}
   <button class="close-menu" id="closeMenu" aria-label="Κλείσιμο μενού">×</button>
   <a href="#about">Προφίλ</a>
   <a href="#services">Υπηρεσίες</a>
-  <a href="#roadmap">Διαδρομή</a>
+  <a href="#philo">Προσέγγιση</a>
   <a href="#reviews">Αξιολογήσεις</a>
   <a href="#faq">Ερωτήσεις</a>
   <a href="#contact" class="mm-cta">Κλείστε ραντεβού</a>
@@ -478,7 +435,7 @@ footer a.credit:hover{border-color:var(--clay)}
   </svg>
 
   <div class="hero-grid">
-      <div class="eyebrow hero-entrance he-1">Κλινικη Ψυχολογος MSc · Εδεσσα & Online</div>
+      <div class="eyebrow hero-entrance he-1">Ψυχολογος MSc · Εδεσσα & Online</div>
       <h1 class="hero-entrance he-2">Η πορεία προς την αλλαγή, ξεκινά από <em>μια αληθινή σχέση.</em></h1>
       <p class="sub hero-entrance he-3">Ψυχοθεραπεία και συμβουλευτική με συστημική ματιά, εστιάζοντας στη συνολική εικόνα και όχι απλώς στο σύμπτωμα. Ένας ασφαλής χώρος, με απόλυτο σεβασμό στις δικές σας ανάγκες.</p>
       <div class="hero-cta-row hero-entrance he-4">
@@ -528,9 +485,8 @@ footer a.credit:hover{border-color:var(--clay)}
       </div>
       <div class="about-copy">
         <div class="sec-label reveal">Λιγα λογια για μενα</div>
-        <p class="lead reveal d1">Ονομάζομαι Ευαγγελία Σάγγα και είμαι Κλινική Ψυχολόγος MSc. Στο ιδιωτικό μου γραφείο, δουλεύουμε μαζί σε ένα προστατευμένο περιβάλλον για να ανακαλύψετε τις δικές σας εσωτερικές δυνάμεις.</p>
-        <p class="reveal d2">Ολοκλήρωσα τις σπουδές μου στο Τμήμα Ψυχολογίας του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης (ΑΠΘ) και έλαβα το Μεταπτυχιακό μου δίπλωμα στην Εφαρμοσμένη Αναπτυξιακή Ψυχολογία. Συνεχίζω την εξέλιξή μου μέσα από την εκπαίδευση στη Συστημική και Οικογενειακή Ψυχοθεραπεία στο Ινστιτούτο Συστημικής Θεραπείας Θεσσαλονίκης.</p>
-        <blockquote class="pull-quote reveal d2">«Πιστεύω ότι καμία δυσκολία δεν υφίσταται στο κενό. Το πλαίσιο της ζωής μας διαμορφώνει την αλήθεια μας.»</blockquote>
+        <p class="lead reveal d1">Ονομάζομαι Ευαγγελία Σάγγα και είμαι Ψυχολόγος MSc. Στο ιδιωτικό μου γραφείο, δουλεύουμε μαζί σε ένα προστατευμένο περιβάλλον για να ανακαλύψετε τις δικές σας εσωτερικές δυνάμεις.</p>
+        <p class="reveal d2">Ολοκλήρωσα τις σπουδές μου στο Τμήμα Ψυχολογίας του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης (ΑΠΘ) και έλαβα το Μεταπτυχιακό μου δίπλωμα στην Εφαρμοσμένη Αναπτυξιακή Ψυχολογία. Συνεχίζω την εξέλιξή μου μέσα από την εκπαίδευση στη Συστημική και Οικογενειακή Ψυχοθεραπεία στο Ινστιτούτο Συστημικής Θεραπείας Θεσσαλονίκης (ISTT), το οποίο είναι πιστοποιημένο εκπαιδευτικό κέντρο από ελληνικούς και ευρωπαϊκούς φορείς ψυχοθεραπείας (EFTA-TIC και EAPTI, ΕΕΨΕ).</p>
         <p class="reveal d3">Μέσα από την πορεία μου σε σχολεία, δομές ειδικής αγωγής και την κλινική πράξη, έχω δει πως η ουσιαστική θεραπεία ανθίζει όταν υπάρχει πραγματική αποδοχή. Προσφέρω ατομικές και οικογενειακές συνεδρίες, με μοναδικό γνώμονα τον σεβασμό στη δική σας, ξεχωριστή διαδρομή.</p>
         <div class="creds reveal d3">
           <span class="cred"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>MSc Α.Π.Θ.</span>
@@ -553,123 +509,41 @@ footer a.credit:hover{border-color:var(--clay)}
         <div class="sec-label reveal">Οι Υπηρεσιες μου</div>
         <h2 class="sec-title reveal d1">Ένας ασφαλής χώρος για εσάς, <em>αλλά και τους ανθρώπους σας.</em></h2>
       </div>
-      <p class="reveal d2">Τα κόστη προσαρμόζονται με βάση τις εξειδικευμένες ανάγκες του κάθε ανθρώπου. Παρέχονται συνεδρίες δια ζώσης και μέσω ασφαλούς βιντεοκλήσης.</p>
     </div>
-    <div class="svc-list reveal">
-      <div class="svc-item">
-        <button class="svc-trigger" aria-expanded="false">
-          <span class="svc-num">01</span>
-          <span class="svc-name">Ατομική συνεδρία</span>
-          <span class="svc-meta">50 λεπτά</span>
-          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Ένας προσωπικός χώρος όπου μπορούμε να δουλέψουμε μαζί ζητήματα άγχους, κρίσεων πανικού, κατάθλιψης ή διαπροσωπικών σχέσεων — πάντοτε με τον δικό σας ρυθμό και χωρίς ίχνος κριτικής.</p></div></div>
-      </div>
-      <div class="svc-item">
-        <button class="svc-trigger" aria-expanded="false">
-          <span class="svc-num">02</span>
-          <span class="svc-name">Συνεδρία μέσω βιντεοκλήσης</span>
-          <span class="svc-meta">50 λεπτά · Online</span>
-          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Η ίδια υψηλή ποιότητα φροντίδας, από όπου κι αν βρίσκεστε. Αποτελεί την ιδανική επιλογή αν ζείτε μακριά, το πρόγραμμά σας είναι απαιτητικό ή απλώς προτιμάτε την άνεση του σπιτιού σας.</p></div></div>
-      </div>
-      <div class="svc-item">
-        <button class="svc-trigger" aria-expanded="false">
-          <span class="svc-num">03</span>
-          <span class="svc-name">Θεραπεία ζεύγους</span>
-          <span class="svc-meta">90 λεπτά</span>
-          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Ένα ουδέτερο έδαφος όπου και οι δύο φωνές έχουν τον χώρο να ακουστούν. Εστιάζουμε στην ουσιαστική επικοινωνία, τα μοτίβα που επαναλαμβάνονται και αντιμετωπίζουμε τη σχέση ως έναν ζωντανό, εξελισσόμενο οργανισμό.</p></div></div>
-      </div>
-      <div class="svc-item">
-        <button class="svc-trigger" aria-expanded="false">
-          <span class="svc-num">04</span>
-          <span class="svc-name">Οικογενειακή θεραπεία</span>
-          <span class="svc-meta">90 λεπτά</span>
-          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Η οικογένεια αντιμετωπίζεται ως ένα ενιαίο σύνολο. Με τη συστημική ματιά εξετάζουμε τη δυναμική και τους ρόλους που συνδέουν τα μέλη, ώστε η θετική αλλαγή να αγγίξει οργανικά όλο το σύστημα.</p></div></div>
-      </div>
-      <div class="svc-item">
-        <button class="svc-trigger" aria-expanded="false">
-          <span class="svc-num">05</span>
-          <span class="svc-name">Παιδί, έφηβος & γονεϊκότητα</span>
-          <span class="svc-meta">Κατόπιν αξιολόγησης</span>
-          <span class="svc-toggle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="svc-body"><div class="svc-body-inner"><span class="spacer"></span><p>Εξειδικευμένη υποστήριξη σε αναπτυξιακές προκλήσεις παιδιών και εφήβων, παράλληλα με ουσιαστική καθοδήγηση των γονέων. Προσεγγίζουμε κάθε ζήτημα με σεβασμό και συμπερίληψη.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="roadmap" id="roadmap">
-  <div class="wrap">
-    <div class="sec-label reveal">Η Διαδικασια</div>
-    <h2 class="sec-title reveal d1">Ένα νήμα που <em>δεν κόβεται.</em></h2>
-    <p class="intro reveal d2">Η ψυχοθεραπεία δεν είναι απλώς ένας προορισμός, αλλά μια εξελικτική διαδρομή. Δείτε πώς ξετυλίγεται η κοινή μας πορεία, με απόλυτο σεβασμό στον δικό σας ρυθμό.</p>
     
-    <div class="road-wrap">
-      <svg class="road-thread" id="roadThread" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M50,0 C70,150 30,250 50,400 C70,550 30,650 50,800 C70,900 50,1000 50,1000" />
-      </svg>
-      
-      <div class="road-steps">
-        <div class="road-step reveal">
-          <div class="road-node"><div class="ring"><span>i</span></div></div>
-          <div class="road-content">
-            <h3>Η Πρώτη Επαφή</h3>
-            <p>Επικοινωνείτε μαζί μου και βρίσκουμε την κατάλληλη στιγμή για το ραντεβού μας. Μια απλή συζήτηση, χωρίς καμία απολύτως πίεση ή δέσμευση — η πρώτη γέφυρα επικοινωνίας.</p>
-            <span class="tag">Βήμα Ένα</span>
-          </div>
-        </div>
-        <div class="road-step reveal">
-          <div class="road-node"><div class="ring"><span>ii</span></div></div>
-          <div class="road-content">
-            <h3>Γνωριμία & Κατανόηση</h3>
-            <p>Στην πρώτη μας συνεδρία, ακούω την ιστορία σας και χαρτογραφούμε μαζί τι σας οδήγησε εδώ. Η βαθιά κατανόηση του δικού σας πλαισίου είναι το θεμέλιο της θεραπείας.</p>
-            <span class="tag">Βήμα Δύο</span>
-          </div>
-        </div>
-        <div class="road-step reveal">
-          <div class="road-node"><div class="ring"><span>iii</span></div></div>
-          <div class="road-content">
-            <h3>Κοινός Σχεδιασμός</h3>
-            <p>Ορίζουμε μαζί τους στόχους και την προσέγγιση που πραγματικά σας ταιριάζει — είτε πρόκειται για ατομική, ζεύγους ή οικογενειακή συνεδρία. Εσείς έχετε πάντα τον έλεγχο.</p>
-            <span class="tag">Βήμα Τρία</span>
-          </div>
-        </div>
-        <div class="road-step reveal">
-          <div class="road-node"><div class="ring"><span>iv</span></div></div>
-          <div class="road-content">
-            <h3>Η Ουσιαστική Δουλειά</h3>
-            <p>Συνεδρία τη συνεδρία, εντοπίζουμε μοτίβα, δοκιμάζουμε νέους τρόπους προσέγγισης και χτίζουμε ένα αίσθημα ασφάλειας. Εδώ συμβαίνει η πραγματική, εσωτερική αλλαγή.</p>
-            <span class="tag">Βήμα Τέσσερα</span>
-          </div>
-        </div>
-        <div class="road-step reveal">
-          <div class="road-node"><div class="ring"><span>v</span></div></div>
-          <div class="road-content">
-            <h3>Ενδυνάμωση & Αυτονομία</h3>
-            <p>Ο τελικός σκοπός δεν είναι η εξάρτηση, αλλά η δική σας ανεξαρτησία. Ολοκληρώνετε τη διαδρομή εφοδιασμένοι με πρακτικά εργαλεία, μια πιο καθαρή οπτική και το νήμα της ζωής σας στα χέρια σας.</p>
-            <span class="tag">Βήμα Πέντε</span>
-          </div>
-        </div>
+    <div class="svc-grid reveal">
+      <div class="svc-pill">
+        <span class="svc-num">01</span>
+        <span class="svc-name">Ατομική Συνεδρία</span>
+      </div>
+      <div class="svc-pill">
+        <span class="svc-num">02</span>
+        <span class="svc-name">Συνεδρία μέσω Βιντεοκλήσης</span>
+      </div>
+      <div class="svc-pill">
+        <span class="svc-num">03</span>
+        <span class="svc-name">Θεραπεία Ζεύγους</span>
+      </div>
+      <div class="svc-pill">
+        <span class="svc-num">04</span>
+        <span class="svc-name">Οικογενειακή Θεραπεία</span>
+      </div>
+      <div class="svc-pill">
+        <span class="svc-num">05</span>
+        <span class="svc-name">Παιδί, Έφηβος & Γονεϊκότητα</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="philo">
+<section class="philo" id="philo">
   <div class="wrap">
     <div class="sec-label reveal">Η Προσεγγιση μου</div>
     <h2 class="sec-title reveal d1">Πώς δουλεύω, <em>και γιατί.</em></h2>
     <div class="philo-grid">
       <div class="philo-card reveal d1">
         <h3>Συστημική Οπτική</h3>
-        <p>Κανένα πρόβλημα δεν αντιμετωπίζεται μεμονωμένα. Κάθε δυσκολία αποκτά το πραγματικό της νόημα μέσα στο δίκτυο των σχέσεων που ζείτε καθημερινά.</p>
+        <p>Οι δυσκολίες προσεγγίζονται μέσα από το πρίσμα του πλαισίου και των σχέσεων του κάθε ατόμου και δεν αντιμετωπίζονται μεμονωμένα.</p>
       </div>
       <div class="philo-card reveal d2">
         <h3>Αποδοχή, Χωρίς Κριτική</h3>
@@ -678,10 +552,6 @@ footer a.credit:hover{border-color:var(--clay)}
       <div class="philo-card reveal d3">
         <h3>Σεβασμός στον Ρυθμό Σας</h3>
         <p>Ο κάθε άνθρωπος φέρει τον δικό του μοναδικό ψυχισμό. Προσαρμόζω την επιστημονική μου γνώση πάνω στις δικές σας ανάγκες, και ποτέ το αντίστροφο.</p>
-      </div>
-      <div class="philo-card reveal d4">
-        <h3>Στόχος η Ανεξαρτησία</h3>
-        <p>Η επιτυχία της θεραπείας έρχεται όταν αισθανθείτε δυνατοί να σταθείτε στα δικά σας πόδια. Δουλεύουμε μαζί για να σας οπλίσω με γνώση, όχι για να δημιουργήσω εξάρτηση.</p>
       </div>
     </div>
   </div>
@@ -767,7 +637,7 @@ footer a.credit:hover{border-color:var(--clay)}
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Πόσο χρόνο διαρκεί μια συνεδρία;<span class="pm" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>Οι ατομικές συνεδρίες διαρκούν 50 λεπτά, ενώ οι συνεδρίες ζεύγους και οι οικογενειακές προγραμματίζονται στα 90 λεπτά. Τα κόστη και οι χρόνοι μπορούν να προσαρμοστούν ανάλογα με τη φύση του περιστατικού.</p></div>
+          <div class="faq-a"><p>Οι ατομικές συνεδρίες διαρκούν 50 λεπτά, ενώ οι συνεδρίες ζεύγους και οι οικογενειακές προγραμματίζονται στα 90 λεπτά. Τα κόστη και οι χρόνοι μπορούν να προσαρμοστούν ανάλογα με τις ανάγκες της κάθε περίπτωσης.</p></div>
         </div>
       </div>
     </div>
@@ -823,7 +693,7 @@ footer a.credit:hover{border-color:var(--clay)}
     <img src="https://raw.githubusercontent.com/agelmet/SAGGA/refs/heads/main/logosag.jpg" alt="Ευαγγελία Σάγγα Λογότυπο" class="img-logo">
     Ευαγγελία Σάγγα
   </div>
-  <span>© <span id="year"></span> Ευαγγελία Σάγγα · Κλινική Ψυχολόγος MSc · Αρ. αδείας 381267/9081</span>
+  <span>© <span id="year"></span> Ευαγγελία Σάγγα · Ψυχολόγος MSc · Αρ. αδείας 381267/9081</span>
   <span>Designed by <a class="credit" href="https://www.advonmedia.com" target="_blank" rel="noopener">Advon Media</a></span>
 </footer>
 
@@ -872,31 +742,6 @@ footer a.credit:hover{border-color:var(--clay)}
   } else {
     revealEls.forEach(function(el){ el.classList.add('in'); });
   }
-
-  // ---- Roadmap thread draw ----
-  var roadThread = document.getElementById('roadThread');
-  if(roadThread){
-    if('IntersectionObserver' in window && !rm){
-      var rt = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting){ roadThread.classList.add('draw'); } });
-      }, {threshold:0.1});
-      rt.observe(roadThread);
-    } else { roadThread.classList.add('draw'); }
-  }
-
-  // ---- Services accordion ----
-  document.querySelectorAll('.svc-item').forEach(function(item){
-    var trig = item.querySelector('.svc-trigger');
-    var body = item.querySelector('.svc-body');
-    trig.addEventListener('click', function(){
-      var open = item.classList.contains('open');
-      document.querySelectorAll('.svc-item.open').forEach(function(o){
-        if(o!==item){ o.classList.remove('open'); o.querySelector('.svc-body').style.maxHeight=null; o.querySelector('.svc-trigger').setAttribute('aria-expanded','false'); }
-      });
-      if(open){ item.classList.remove('open'); body.style.maxHeight=null; trig.setAttribute('aria-expanded','false'); }
-      else{ item.classList.add('open'); body.style.maxHeight=body.scrollHeight+'px'; trig.setAttribute('aria-expanded','true'); }
-    });
-  });
 
   // ---- FAQ accordion ----
   document.querySelectorAll('.faq-item').forEach(function(item){
